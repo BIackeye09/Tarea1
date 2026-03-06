@@ -1,0 +1,502 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tarea1</title>
+
+<style>
+
+/* ================= BODY ================= */
+
+body {
+    margin: 0;
+    overflow: hidden;
+    min-height: 100vh;
+    font-family: Arial;
+
+    background: radial-gradient(
+        ellipse at bottom,
+        #0d1d31 0%,
+        #080f1a 100%
+    );
+}
+
+
+/* ================= ESTRELLAS ================= */
+
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.stars::after {
+
+    content: "";
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: white;
+
+    box-shadow:
+        50px 80px white,
+        120px 150px white,
+        200px 50px white,
+        300px 200px white,
+        400px 120px white,
+        500px 300px white,
+        600px 100px white,
+        700px 250px white,
+        800px 180px white,
+        900px 90px white,
+        1000px 220px white,
+        1100px 60px white,
+        1200px 140px white,
+        1300px 300px white,
+        1400px 200px white,
+        1500px 100px white,
+        1600px 260px white,
+        1700px 180px white,
+        1800px 320px white;
+
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: .3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ================= LUNA ================= */
+
+.moon {
+
+    position: fixed;
+    top: 60px;
+    right: 80px;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: #f5f3ce;
+
+    box-shadow:
+        0 0 40px rgba(255,255,200,.8),
+        0 0 80px rgba(255,255,200,.4);
+}
+
+
+/* ================= MENSAJE ================= */
+
+.mensaje {
+
+    position: fixed;
+    top: 15%;
+    width: 100%;
+
+    text-align: center;
+
+    color: white;
+    font-size: 32px;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 20px pink,
+        0 0 30px pink;
+
+    opacity: 0;
+    z-index: 999;
+
+    animation: aparecer 6s forwards;
+    animation-delay: 3s;
+}
+
+@keyframes aparecer {
+
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ================= CONTENEDOR ROSA ================= */
+
+.container {
+
+    position: absolute;
+
+    left: 50%;
+    top: 55%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/* ================= FRASCO ================= */
+
+.glass {
+
+    height: 800px;
+    width: 600px;
+
+    background: #122139;
+
+    border-radius: 300px 300px 0 0;
+
+    overflow: hidden;
+}
+
+.glass::before {
+
+    content: "";
+
+    position: absolute;
+
+    height: 40px;
+    width: 40px;
+
+    border: 25px solid #122139;
+
+    border-radius: 100%;
+
+    left: 256px;
+    top: -74px;
+}
+
+.glass::after {
+
+    content: "";
+
+    position: absolute;
+
+    height: 15px;
+    width: 600px;
+
+    background: #a52a2a;
+
+    top: 100%;
+    left: 0;
+}
+
+
+/* ================= REFLEJO VIDRIO ================= */
+
+.shine {
+
+    width: 26px;
+    height: 330px;
+
+    background: white;
+
+    opacity: .2;
+
+    position: absolute;
+
+    left: 85%;
+    top: 200px;
+
+    border-radius: 100px;
+}
+
+
+/* ================= PETALOS ================= */
+
+.petals > div {
+
+    position: absolute;
+
+    background: #d52d58;
+
+    width: 85px;
+    height: 120px;
+
+    top: 200px;
+}
+
+.petals > div:nth-child(1) {
+
+    border-radius: 15px;
+
+    box-shadow: 0 0 60px rgba(245,148,184,1);
+
+    left: 268px;
+}
+
+
+/* lados */
+
+.petals > div:nth-child(2),
+.petals > div:nth-child(4),
+.petals > div:nth-child(6) {
+
+    left: 230px;
+
+    border-radius: 0 50px 0 50px;
+}
+
+.petals > div:nth-child(3),
+.petals > div:nth-child(5),
+.petals > div:nth-child(7) {
+
+    left: 300px;
+
+    border-radius: 50px 0 50px 0;
+}
+
+
+/* animaciones de apertura */
+
+.petals > div:nth-child(2) {
+    animation: bloom2 3s forwards;
+}
+
+.petals > div:nth-child(3) {
+    animation: bloom3 3s forwards, glowing 2.5s infinite;
+}
+
+.petals > div:nth-child(4) {
+    animation: bloom4 3s forwards, glowing 2.5s infinite;
+}
+
+
+/* Pétalo 5 */
+
+.petals > div:nth-child(5) {
+
+  animation:
+    bloom5 3s ease-in-out forwards,
+    glowing 2.5s infinite,
+    caerPetalo 6s ease-in forwards;
+
+  animation-delay: 0s, 0s, 4s;
+
+}
+
+
+/* Pétalo 6 */
+
+.petals > div:nth-child(6) {
+
+  animation:
+    bloom6 3s ease-in-out forwards,
+    glowing 2.5s infinite,
+    caerPetalo 7s ease-in forwards;
+
+  animation-delay: 0s, 0s, 5s;
+
+}
+
+
+/* Pétalo 7 */
+
+.petals > div:nth-child(7) {
+
+  animation:
+    bloom7 3s ease-in-out forwards,
+    glowing 2.5s infinite,
+    caerPetalo 6s ease-in forwards;
+
+  animation-delay: 0s, 0s, 6s;
+
+}
+
+
+/* ================= TALLO Y HOJAS ================= */
+
+.leaves div:nth-child(1){
+
+    position:absolute;
+
+    width:15px;
+    height:390px;
+
+    background:#054c05;
+
+    top:308px;
+    left:300px;
+
+    border-radius:0 0 100px 100px;
+}
+
+.leaves div:nth-child(2){
+
+    position:absolute;
+
+    width:60px;
+    height:100px;
+
+    background:#054c05;
+
+    border-radius:10px 80px 40px 80px;
+
+    transform:rotate(-30deg);
+
+    top:412px;
+    left:254px;
+}
+
+.leaves div:nth-child(3){
+
+    position:absolute;
+
+    width:60px;
+    height:100px;
+
+    background:#054c05;
+
+    border-radius:80px 1px 80px 40px;
+
+    transform:rotate(30deg);
+
+    top:360px;
+    left:300px;
+}
+
+.leaves div:nth-child(4){
+
+    position:absolute;
+
+    width:55px;
+    height:30px;
+
+    background:#338f37;
+
+    top:334px;
+    left:278px;
+
+    border-radius:100px;
+}
+
+
+/* ================= ANIMACIONES ================= */
+
+@keyframes bloom2 { 100% { transform: rotate(-60deg); } }
+@keyframes bloom3 { 100% { transform: rotate(50deg); } }
+@keyframes bloom4 { 100% { transform: rotate(-25deg); } }
+@keyframes bloom5 { 100% { transform: rotate(25deg); } }
+@keyframes bloom6 { 100% { transform: rotate(-10deg); } }
+@keyframes bloom7 { 100% { transform: rotate(10deg); } }
+
+@keyframes glowing {
+
+    50% {
+
+        background:#d7365f;
+
+        box-shadow:0 0 60px rgba(245,148,184,1);
+    }
+}
+
+/* Animación de caída de pétalos */
+
+@keyframes caerPetalo {
+
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translateY(150px) rotate(80deg);
+  }
+
+  70% {
+    transform: translateY(300px) rotate(160deg);
+  }
+
+  100% {
+    transform: translateY(420px) rotate(260deg);
+    opacity: 1;
+  }
+
+}
+
+
+
+@media (max-width:768px) {
+
+    .container {
+        transform: translate(-50%, -50%) scale(.55);
+    }
+
+    .mensaje {
+        font-size: 24px;
+    }
+}
+
+@media (max-width:480px) {
+
+    .container {
+        transform: translate(-50%, -50%) scale(.40);
+    }
+
+    .moon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="stars"></div>
+
+<div class="moon"></div>
+
+<div class="mensaje">
+    Cuando se caigan los últimos pelatos, sera cuando me quede sin cariño
+</div>
+
+
+<div class="container">
+
+    <div class="glass">
+        <div class="shine"></div>
+    </div>
+
+    <div class="leaves">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="petals">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</div>
+
+</body>
+</html>
+```
